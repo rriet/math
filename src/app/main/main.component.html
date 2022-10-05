@@ -1,0 +1,122 @@
+<mat-card class="optionsCard">
+    <mat-card-title>Operations</mat-card-title>
+    <mat-card-actions>
+        <section>
+            <span>
+                <mat-checkbox [checked]="updateAllComplete(conf.operations)" [indeterminate]="someComplete(conf.operations)"
+                    (change)="setAll($event.checked, conf.operations)">
+                    {{conf.operations.name}}
+                </mat-checkbox>
+            </span>
+            <span>
+                <div fxLayout="row wrap" fxLayoutGap="50px" class="padded">
+                    <div *ngFor="let subOption of conf.operations.subOption">
+                        <mat-checkbox [(ngModel)]="subOption.selected">
+                            <span [innerHTML]="subOption.name"></span>
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </span>
+        </section>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="optionsCard">
+    <mat-card-title>Values</mat-card-title>
+    <mat-card-actions>
+        <section>
+            <div fxLayout="row wrap" fxLayoutGap="50px" class="padded">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Minimum value for A</mat-label>
+                        <input matInput type="number" required placeholder="Minimum A" [(ngModel)]="conf.minA">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Maximum value for A</mat-label>
+                        <input matInput type="number" required placeholder="Maximum A" [(ngModel)]="conf.maxA">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Minimum value for B</mat-label>
+                        <input matInput type="number" required placeholder="Minimum B" [(ngModel)]="conf.minB">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Maximum value for B</mat-label>
+                        <input matInput type="number" required placeholder="Maximum B" [(ngModel)]="conf.maxB">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Result can be negative</mat-label>
+                        <select matNativeControl required [(ngModel)]="conf.negative">
+                            <option value='false'>False</option>
+                            <option value='true'>True</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Result must be integer</mat-label>
+                        <select matNativeControl required [(ngModel)]="conf.integer">
+                            <option value='false'>False</option>
+                            <option value='true'>True</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Difficulty</mat-label>
+                        <select matNativeControl required [(ngModel)]="conf.difficulty">
+                            <option value="c">Find "C"</option>
+                            <option value="any">Find "A", "B" or "C"</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </section>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="optionsCard">
+    <mat-card-title>Layout</mat-card-title>
+    <mat-card-actions>
+        <section>
+            <div fxLayout="row wrap" fxLayoutGap="50px" class="padded">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Number of Lines</mat-label>
+                        <input matInput type="number" required placeholder="Number of Lines" [(ngModel)]="conf.numLines">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Number of Columns</mat-label>
+                        <input matInput type="number" required placeholder="Number of Columns" [(ngModel)]="conf.numColl">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Font Type</mat-label>
+                        <select matNativeControl required [(ngModel)]="conf.fontType">
+                            <option value="normal">Normal</option>
+                            <option value="dotted">Dotted</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Font Size</mat-label>
+                        <input matInput type="number" required placeholder="Font Size" [(ngModel)]="conf.fontSize">
+                    </mat-form-field>
+                </div>
+            </div>
+        </section>
+    </mat-card-actions>
+</mat-card>
+<div class="padded"><button mat-raised-button color="primary" [disabled]="conf.getOpetations().length == 0"
+    routerLink="result">Generate Exercise</button></div>

@@ -1,0 +1,14 @@
+<div [class]="conf.fontType" [style]="'font-size: '+conf.fontSize+'px;'">
+    <table>
+        <tr *ngFor="let line of exercises">
+            <td *ngFor="let column of line" >
+                <span [innerHTML]="column"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="padded">
+    <button mat-raised-button color="primary" routerLink="/">Back</button>
+    &nbsp;
+    <button mat-raised-button color="accent" onclick="window.print();">Print</button>
+</div>
